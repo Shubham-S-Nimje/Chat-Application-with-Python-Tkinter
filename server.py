@@ -11,7 +11,9 @@ def handle_client(client_socket,addr):
 
 def broadcast(message,client_socket):
     for client in clients:
-        client.send(message.encode())
+        # client.send(message.encode())
+        if client != client_socket:
+            client.send(message.encode())
 
 def start_server(host="localhost", port=4000):
     server = socket.socket()
